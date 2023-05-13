@@ -1,15 +1,18 @@
 require('dotenv').config();
 const { API_KEY } = process.env;
 const axios = require("axios");
+const { Videogames } = require("../db")
 
 const URL = `https://api.rawg.io/api/games?key=${API_KEY}`
 
 
 //TRAE TODOS LOS JUEGOS DE LA API QUE ESTAN EN LAS PRIMERAS 15 PAGINAS  
-const getVideogames = async (req, res) => {
+const getVideogames = async () => {
     let allVideogames = []
     let page = 1
-    try {
+    let videogamesConcat = []
+    
+        const videogamesDb = await Videogames.findAll()
         while (page <= 15) {
             const { data } = await axios.get(`${URL}&page=${page}`)
             if(!data) throw Error("Error en la URL")
@@ -30,12 +33,10 @@ const getVideogames = async (req, res) => {
             }
             page++
         }
-        
-        return res.status(200).json(allVideogames)
 
-    } catch (error) {
-        res.status(400).json({ error: error.message })  
-    }
+        if(videogamesDb.length) videogamesConcat = [...videogamesDb, ...allVideogames]
+        if(videogamesDb.length) return videogamesConcat
+        else return allVideogames
 }
 
 module.exports = getVideogames
