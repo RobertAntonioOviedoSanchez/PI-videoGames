@@ -5,8 +5,8 @@ const { Videogames, Genres } = require("../db")
 const { Op } = require('sequelize');
 
 
-const getVideogamesByName = async (name) => {
-    const videogamesDB = await Videogames.findAll({
+const getVideogamesByName = async (name) => {  
+    const videogamesDb = await Videogames.findAll({
         where: {
             name: {
                 [Op.iLike]: `${name}`,
@@ -23,31 +23,30 @@ const getVideogamesByName = async (name) => {
     });
 
   
-    const response = await axios(`https://api.rawg.io/api/games?search=${name}&key=${API_KEY}`);
+    const { data } = await axios(`https://api.rawg.io/api/games?search=${name}&key=${API_KEY}`);
     const videogamesApi = [];
     for (let i = 0; i < 15; i++) {
-        const data = response.data.results[i];
-        const platforms = data.platforms.map(obj => obj.platform.name);
-        const genres = data.genres.map(obj => obj.name);
-        const videogame = {
+        const gamesResults = data.results[i];
+        const platforms = gamesResults.platforms.map(obj => obj.platform.name);
+        const genres = gamesResults.genres.map(obj => obj.name);
 
-            id: data.id,
-            name: data.name,
-            background_image: data.background_image,
+        const game = {
+            id: gamesResults.id,
+            name: gamesResults.name,
+            background_image: gamesResults.background_image,
             platforms: platforms,
-            description: data.description,
-            released: data.released,
+            description: gamesResults.description,
+            released: gamesResults.released,
             genres: genres
         }
-        videogamesApi.push(videogame);
+        videogamesApi.push(game);
     }
-    if (videogamesDB.length && videogamesApi.length) {
-        const allGames = [...videogamesDB, ...videogamesApi].slice(0, 15);
+    if (videogamesDb.length && videogamesApi.length) {
+        const allGames = [...videogamesDb, ...videogamesApi].slice(0, 15);
         return allGames;
     }
-    if (videogamesDB.length) return videogamesDB;
+    if (videogamesDb.length) return videogamesDb;
     if (videogamesApi.length) return videogamesApi;
-
 }
 
 module.exports = getVideogamesByName;

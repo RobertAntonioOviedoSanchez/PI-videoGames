@@ -13,7 +13,7 @@ const getVideogames = async () => {
     let videogamesConcat = []
     
         const videogamesDb = await Videogames.findAll()
-        while (page <= 15) {
+        while (page <= 7) {
             const { data } = await axios.get(`${URL}&page=${page}`)
             if(!data) throw Error("Error en la URL")
             if (data) {

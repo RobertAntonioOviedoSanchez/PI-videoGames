@@ -12,6 +12,16 @@ const router = Router();
 // Configurar los routers
 // Ejemplo: router.use('/auth', authRouter);
 
+//BUSCAR UN JUEGO POR NOMBRE
+router.get("/name", async (req, res) => {
+    try {
+        const { name } = req.query
+        const results = name ? await getVideogamesByName(name) : "Por favor ingrese un nombre"
+        return res.status(200).json(results)
+    } catch (error) {
+        return res.status(400).json({ error: error.message })
+    }
+})
 
 //BUSCAR TODOS LOS JUEGOS
 router.get("/", async (req, res) => {
@@ -36,16 +46,6 @@ router.get("/:idVideogame", async (req, res) => {
 })
 
 
-//BUSCAR UN JUEGO POR NOMBRE
-router.get("/name", async (req, res) => {
-    try {
-        const { name } = req.query
-        const results = name ? await getVideogamesByName(name) : "Por favor ingrese un nombre"
-        return res.status(200).json(results)
-    } catch (error) {
-        return res.status(400).json({ error: error.message })
-    }
-})
 
 
 //CREAR UN JUEGO
