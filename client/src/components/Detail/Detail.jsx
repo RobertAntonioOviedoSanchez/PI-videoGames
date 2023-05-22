@@ -29,15 +29,15 @@ const Detail = () => {
 
             <h2>Platforms:</h2>
             {
-                detailVideogame.platforms?.map(platform => {
-                    return <p>{platform}</p>
+                detailVideogame.platforms?.map((platform, index) => {
+                    return <p key={index}>{platform}</p>
                 })
             }
 
             <h2>Genres:</h2>
             {
-                detailVideogame.genres?.map(genre => {
-                    return <p>{genre}</p>
+                detailVideogame.genres?.map((genre, index) => {
+                    return <p key={index}>{genre}</p>
                 })
             }
 

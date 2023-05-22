@@ -10,6 +10,7 @@ export const REMOVE_DETAIL = "REMOVE_DETAIL"
 export const CLEAN_NAMES = "CLEAN_NAMES"
 export const NEXT_PAGE = "NEXT_PAGE"
 export const PREV_PAGE = "PREV_PAGE"
+export const POST_VIDEOGAME = "POST_VIDEOGAME"
 
 
 
