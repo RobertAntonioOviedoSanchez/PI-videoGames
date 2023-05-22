@@ -18,7 +18,7 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
     },
     platforms: {//ARRAY
-      type: DataTypes.STRING,
+      type: DataTypes.ARRAY(DataTypes.STRING),
       allowNull: false,
       //type: DataTypes.ARRAY,
     },
@@ -30,7 +30,7 @@ module.exports = (sequelize) => {
       }
     },
     released: {
-      type: DataTypes.DATE,
+      type: DataTypes.STRING,
       allowNull: false,
       //type: DataTypes.STRING,
     },
@@ -39,5 +39,10 @@ module.exports = (sequelize) => {
       allowNull: false,
       //type: DataTypes.DECIMAL,  //si la de arriba no toma decimales, activar esta
     },
+    createInDb:{
+      type:DataTypes.BOOLEAN,
+      allowNull:false,
+      defaultValue:true
+    }
   }, { timestamps: false });
 };

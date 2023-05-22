@@ -1,0 +1,20 @@
+export const GET_ALL_VIDEOGAMES = "GET_ALL_VIDEOGAMES"
+export const GET_VIDEOGAME_BY_ID = "GET_VIDEOGAME_BY_ID"
+export const GET_VIDEOGAMES_BY_NAME = "GET_VIDEOGAMES_BY_NAME"
+export const GET_GENRES = "GET_GENRES"
+export const FILTER_BY_GENRE = "FILTER_BY_GENRE"
+export const FILTER_BY_ORIGIN = "FILTER_BY_ORIGIN"
+export const ORDER_BY_NAME = "ORDER_BY_NAME"
+export const ORDER_BY_RATING = "ORDER_BY_RATING"
+export const REMOVE_DETAIL = "REMOVE_DETAIL"
+export const CLEAN_NAMES = "CLEAN_NAMES"
+export const NEXT_PAGE = "NEXT_PAGE"
+export const PREV_PAGE = "PREV_PAGE"
+
+
+
+
+
+
+
+

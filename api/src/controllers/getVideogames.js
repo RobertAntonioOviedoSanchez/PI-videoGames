@@ -13,11 +13,12 @@ const getVideogames = async () => {
     let videogamesConcat = []
     
         const videogamesDb = await Videogames.findAll()
-        while (page <= 7) {
+        while (page <= 5) {
             const { data } = await axios.get(`${URL}&page=${page}`)
             if(!data) throw Error("Error en la URL")
             if (data) {
                 data.results.map(videogame => {
+                    const genres = videogame.genres.map(genre => genre.name);
                     const game = {
                         id: videogame.id,
                         name: videogame.name,
@@ -26,7 +27,7 @@ const getVideogames = async () => {
                         image: videogame.background_image,
                         released: videogame.released,
                         rating: videogame.rating,
-                        genres: videogame.genres
+                        genres: genres
                     }
                 allVideogames.push(game)
                 })   

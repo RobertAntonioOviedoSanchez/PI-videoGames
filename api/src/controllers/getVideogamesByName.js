@@ -27,14 +27,14 @@ const getVideogamesByName = async (name) => {
     const videogamesApi = [];
     for (let i = 0; i < 15; i++) {
         const gamesResults = data.results[i];
-        const platforms = gamesResults.platforms.map(obj => obj.platform.name);
+        //const platforms = gamesResults.platforms.map(obj => obj.platform.name);
         const genres = gamesResults.genres.map(obj => obj.name);
 
         const game = {
             id: gamesResults.id,
             name: gamesResults.name,
-            background_image: gamesResults.background_image,
-            platforms: platforms,
+            image: gamesResults.background_image,
+            platforms: gamesResults.platforms,
             description: gamesResults.description,
             released: gamesResults.released,
             genres: genres
