@@ -4,28 +4,28 @@ const validation = (formData) => {
     const errors = {}
 
     if (!formData.name) {
-        errors.name = "debe ingresar un nombre"
+        errors.name = "you must enter a name"
     }
     if (!formData.released) {
-        errors.released = "debe ingresar una fecha de creacion"
+        errors.released = "You must enter a creation date"
     }
     if (!formData.rating || formData.rating <= 0 || formData.rating > 5) {
-        errors.rating = "debe ingresar un rating entre 1 y 5 de valoracion. Puede contener decimales"
+        errors.rating = "You must enter a rating between 1 and 5. May contain decimals"
     }
     if (!formData.image) {
-        errors.image = "debe ingresar una imagen"
+        errors.image = "you must enter an image"
     }
     if (!formData.image.includes("https://")) {
-        errors.image = "debe ingresar una imagen de tipo URL"
+        errors.image = "you must enter an image of type URL"
     }
     if (!formData.description) {
-        errors.description = "debe ingresar una descripcion para su juego"
+        errors.description = "you must enter a description for your game"
     }
-    if (!formData.genres.length) {
-        errors.genres = "debe seleccionar al menos 1 genero"
+    if (formData.genres.length === 0) {
+        errors.genres = "You must select at least one gender"
     }
-    if (!formData.platforms.length) {
-        errors.platforms = "debe seleccionar al menos 1 plataforma"
+    if (formData.platforms.length === 0) {
+        errors.platforms = "You must select at least one platform"
     }
     
 

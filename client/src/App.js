@@ -4,8 +4,8 @@ import Home from './components/Home/Home';
 import Detail from './components/Detail/Detail'
 import Form from './components/Form/Form'
 import Nav from './components/Nav/Nav'
-import About from './components/About/About'
 import GamesNames from './components/GamesNames/GamesNames';
+import Fooder from './components/Fooder/Fooder'
 import { Route, useLocation, } from 'react-router-dom';
 
 function App() {
@@ -38,10 +38,10 @@ function App() {
       <Route exact path="/form">
         <Form />
       </Route>
-      
-      <Route exact path="/about">
-        <About />
-      </Route>
+
+      {
+        location.pathname !== "/" && <Fooder/> 
+      }
 
     </div>
   );

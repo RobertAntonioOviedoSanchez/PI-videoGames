@@ -1,0 +1,26 @@
+
+.container {
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+    margin: 2rem;
+}
+
+.containerOrders {
+    display: flex;
+}
+
+.containerFilters {
+    display: flex;
+}
+
+.selects {
+    width: 10rem;
+    height: 2rem;
+    font-size: 18px;
+    border-radius: 8px;
+    padding: 2px;
+    background-color: black;
+    border: solid 1px #812c86;
+    margin: 0 0.5rem;
+}

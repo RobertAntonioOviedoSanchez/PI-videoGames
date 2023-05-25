@@ -1,0 +1,31 @@
+.containerSearch {
+    display: flex;
+    margin: 0;
+}
+
+.searchBar {
+    width: 23rem;
+    height: 20px;
+    padding: 1.1rem 1rem;
+    border-radius: 0.7rem;
+    border: solid 1px #812c86;
+    font-size: 1rem;
+    background: none;
+    color: white;
+}
+
+.button {
+    background: none;
+    border: none;
+    /* margin-left: 0.5rem; */
+    font-size: 1.2rem;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-weight: 500;
+    margin: 0.5rem auto auto 0.5rem;
+}
+
+.button:hover {
+    transform: scale(1.1);
+}

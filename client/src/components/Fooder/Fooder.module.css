@@ -1,0 +1,33 @@
+.container {
+    width: 100%;
+    display: flex;
+    padding: 1%;
+    background-color: #000;
+}
+
+.containerLeft {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.containerRight {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.p {
+    font-size: 1.3rem;
+    color: white;
+}
+
+.image {
+    width: 3rem;
+    gap: 1rem;
+    background: white;
+    border-radius: 12px;
+}

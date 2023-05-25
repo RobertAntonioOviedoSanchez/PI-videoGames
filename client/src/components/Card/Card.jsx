@@ -1,24 +1,35 @@
 import { NavLink } from "react-router-dom";
-
+import Style from "./Card.module.css"
 
 const Card = ({ id, name, image, genres }) => {
     
     return(    
-            <div>
-                <img src={image} alt={name}   width={"200px"}/>
-                <h2>{name}</h2>
-                <h3>Genres</h3>
-                {
-                  genres?.map((genre, index) => {
-                    return (
-                      <p key={index}>{genre}</p>
-                      ) 
-                  })
-                }
+            <div className={Style.containerCard}>
+                <div className={Style.containerImage}>
+                  <img className={Style.imgCard} src={image} alt={name}  />
+                </div>
 
-                <NavLink to={`/detail/${id}`}>
-                  <button>Detalles sobre el juego</button>
-                </NavLink>
+                <div className={Style.containerName}>
+                  <h2 className={Style.name} >{name}</h2>
+                </div>
+
+                <div className={Style.containerGenres}>
+                  {/* <h3>Genres</h3> */}
+                  {
+                    genres?.map((genre, index) => {
+                      return (
+                        <p key={index} className={Style.genres}>{genre}</p>
+                        ) 
+                    })
+                  }
+                </div>
+
+                <div className={Style.containerButton}>
+                  <NavLink to={`/detail/${id}`}>
+                    <button className={Style.button}>Detail videogame</button>
+                  </NavLink>
+                </div>
+
                 
                 
             

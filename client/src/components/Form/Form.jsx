@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import validation from "./Validation"
 import { getGenres } from "../../redux/actions";
+import Style from "./Form.module.css"
 
 
 
@@ -93,7 +94,6 @@ const Form = () => {
             [event.target.name]: event.target.value
         })
 
-        //NOTA ---- validation no se ha creado aun, esa funcion son las validaciones que deberian estar en otro archivo .js
         setErrors(validation({ //ejecuto validation y lo que va a setear es su retorno, si quiero chequear cual es el retorno, esta en el archivo Validation
             ...newVideogame,
             [event.target.name]: event.target.value
@@ -130,114 +130,120 @@ const Form = () => {
             rating: "",
             genres: [],
         })
-        alert("Your videogame has just created succesfully")
+        alert("Your videogame has been created succesfully")
     }
 
 
     return(
-        <div>
-            <h1>Form post videogame</h1>
+        <div className={Style.containerForm}>
 
-            <form onSubmit={handleSubmit}>
-                {/* ------------------NAME--------------- */}
+                <h1 className={Style.h1}>Create your own videogame</h1>
+
                 <div>
-                    <label htmlFor="name">Name: </label>
-                    <input type="text" onChange={handleChange} name="name" value={newVideogame.name} placeholder="Name new videogame" />
-                    {errors.name ? <p>{errors.name}</p> : null}
+
+                    <form onSubmit={handleSubmit} className={Style.form}>
+                        {/* ------------------NAME--------------- */}
+                        <div>
+                            <label htmlFor="name" className={Style.labels}>Name </label>
+                            <input type="text" onChange={handleChange} name="name" value={newVideogame.name} placeholder="Name new videogame" className={Style.inputs} />
+                            {errors.name ? <p className={Style.errors}>{errors.name}</p> : null}
+                        </div>
+
+
+                        {/* ------------------RELEASED--------------- */}
+                        <div>
+                            <label htmlFor="released" className={Style.labels}>Released </label>
+                            <input type="date" onChange={handleChange} name="released" value={newVideogame.released} placeholder="Released videogame" className={Style.inputs} />
+                            {errors.released ? <p className={Style.errors}>{errors.released}</p> : null}
+                        </div>
+
+
+                        {/* ------------------RATING--------------- */}
+                        <div>
+                            <label htmlFor="rating" className={Style.labels}>Rating </label>
+                            <input type="text" onChange={handleChange} name="rating" value={newVideogame.rating} placeholder="Rating new videogame" className={Style.inputs} />
+                            {errors.rating ? <p className={Style.errors}>{errors.rating}</p> : null}
+                        </div>
+
+
+                        {/* ------------------IMAGE--------------- */}
+                        <div>
+                            <label htmlFor="image" className={Style.labels}>Image </label>
+                            <input type="text" onChange={handleChange} name="image" value={newVideogame.image} placeholder="URL image" className={Style.inputs} />
+                            {errors.image ? <p className={Style.errors}>{errors.image}</p> : null}
+                        </div>
+
+
+                        {/* ------------------GENRES--------------- */}
+                        <label htmlFor="genres" className={Style.labels}>Genres </label>
+                        <div className={Style.divMapped}>
+                            <select name="genres" onChange={handleGenres} className={Style.selects}>
+                                <option disabled="disabled" ></option>
+                                {
+                                    genres 
+                                    ? genres.map((genre, index) => {
+                                            return (
+                                                <option key={index} value={genre.name}>{genre.name}</option>
+                                            )
+                                        }) 
+                                    : null
+                                }
+                            </select>
+                            {/* <div> */}
+                                {
+                                    newVideogame.genres.map((genre, index) => {
+                                        return (
+                                            <p className={Style.mapped} key={index}>{genre}</p>
+                                        )
+                                    })
+                                }
+                            {/* </div> */}
+                        </div>
+                        {errors.genres ? <p className={Style.errors}>{errors.genres}</p> : null}
+
+
+                        {/* ------------------PLATFORMS--------------- */}
+                        <label htmlFor="platforms" className={Style.labels}>Platforms </label>
+                        <div className={Style.divMapped}>
+                            <select name="platforms" onChange={handlePlatforms} className={Style.selects}>
+                                <option disabled="disabled" ></option>
+                                {
+                                    platforms.map((platform, index) => {
+                                        return (
+                                            <option key={index} value={platform}>{platform}</option>
+                                        )
+                                    })
+                                }
+
+                            </select>
+                            {/* <div> */}
+                                {
+                                    newVideogame.platforms.map((platform, index) => {
+                                        return (
+                                            <p className={Style.mapped} key={index}>{platform}</p>
+                                        )
+                                    })
+                                }
+                            {/* </div> */}
+                        </div>
+                        {errors.platforms ? <p className={Style.errors}>{errors.platforms}</p> : null}
+
+
+                        {/* ------------------DESCRIPTION--------------- */}
+                        <div>
+                            <label htmlFor="description" className={Style.labels}>Description </label>
+                            <textarea onChange={handleChange} name="description" value={newVideogame.description} placeholder="Description about your new videogame" className={Style.description} />
+                            {errors.description ? <p className={Style.errors}>{errors.description}</p> : null}
+                        </div>
+
+
+                        {/* ------------------BUTTON SUBMIT--------------- */}
+                        <button disabled={isDisabled} className={Style.button}>Create videogame</button>
+                        
+
+                    </form>
                 </div>
 
-
-                {/* ------------------RELEASED--------------- */}
-                <div>
-                    <label htmlFor="released">Released: </label>
-                    <input type="date" onChange={handleChange} name="released" value={newVideogame.released} placeholder="Released videogame" />
-                    {errors.released ? <p>{errors.released}</p> : null}
-                </div>
-
-
-                {/* ------------------RATING--------------- */}
-                <div>
-                    <label htmlFor="rating">Rating: </label>
-                    <input type="text" onChange={handleChange} name="rating" value={newVideogame.rating} placeholder="Rating new videogame" />
-                    {errors.rating ? <p>{errors.rating}</p> : null}
-                </div>
-
-
-                {/* ------------------IMAGE--------------- */}
-                <div>
-                    <label htmlFor="image">Image: </label>
-                    <input type="text" onChange={handleChange} name="image" value={newVideogame.image} placeholder="URL image" />
-                    {errors.image ? <p>{errors.image}</p> : null}
-                </div>
-
-
-                {/* ------------------GENRES--------------- */}
-                <div>
-                    <label htmlFor="genres">Genres: </label>
-                    <select name="genres" onChange={handleGenres}>
-                        <option disabled="disabled" ></option>
-                        {
-                            genres 
-                            ? genres.map((genre, index) => {
-                                    return (
-                                        <option key={index} value={genre.name}>{genre.name}</option>
-                                    )
-                                }) 
-                            : null
-                        }
-                    </select>
-                    <div>
-                        {
-                            newVideogame.genres.map((genre, index) => {
-                                return (
-                                    <p key={index}>{genre}</p>
-                                )
-                            })
-                        }
-                    </div>
-                    {errors.genres ? <p>{errors.genres}</p> : null}
-                </div>
-
-
-                {/* ------------------PLATFORMS--------------- */}
-                <div>
-                    <label htmlFor="platforms">Platforms: </label>
-                    <select name="platforms" onChange={handlePlatforms}>
-                        <option disabled="disabled" ></option>
-                        {
-                            platforms.map((platform, index) => {
-                                return (
-                                    <option key={index} value={platform}>{platform}</option>
-                                )
-                            })
-                        }
-
-                    </select>
-                    <div>
-                        {
-                            newVideogame.platforms.map((platform, index) => {
-                                return (
-                                    <p key={index}>{platform}</p>
-                                )
-                            })
-                        }
-                    </div>
-                    {errors.platforms ? <p>{errors.platforms}</p> : null}
-                </div>
-
-
-                {/* ------------------DESCRIPTION--------------- */}
-                <div>
-                    <label htmlFor="description">description: </label>
-                    <textarea onChange={handleChange} name="description" value={newVideogame.description} placeholder="Description about new videogame" />
-                    {errors.description ? <p>{errors.description}</p> : null}
-                </div>
-
-
-                {/* ------------------BUTTON SUBMIT--------------- */}
-                <button disabled={isDisabled}>Create videogame</button>
-
-            </form>
         </div>
     )
 }

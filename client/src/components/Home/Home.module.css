@@ -1,0 +1,41 @@
+* {
+    color: white;
+}
+
+.containerHome {
+    width: auto;
+    height: auto;
+    min-height: 100vh;
+    background-image: url(./fondo.jpg);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+
+.h1 {
+    font-size: 5rem;
+}
+
+.p {
+    font-size: 1.5rem;
+}
+
+.containerFilters {
+    display: flex;
+}
+
+.containerCards {
+    display: flex;
+    flex-wrap: wrap; /*limite, para que no se sobrepase del tamaño de la pantalla*/
+    justify-content: center;
+    gap: 2rem; /*separacion entre cards*/
+    margin: 2rem;
+}
+
+.containerPaginate {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}

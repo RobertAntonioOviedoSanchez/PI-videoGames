@@ -2,6 +2,8 @@ import { useDispatch } from "react-redux";
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { getVideogamesByName } from "../../redux/actions";
+import Style from "./SearchBar.module.css"
+
 
 
 const SearchBar = () => {
@@ -18,10 +20,10 @@ const SearchBar = () => {
     }
 
     return(
-        <div>
-            <input type="search" onChange={handleChange} value={name} placeholder="Buscar juegos por nombre"  />
+        <div className={Style.containerSearch}>
+            <input type="search" onChange={handleChange} value={name} placeholder="Search videogames by name" className={Style.searchBar} />
             <NavLink to={"/name"}>
-                <button onClick={() => { onSearch(name); setName("")}}>Buscar</button>
+                <button onClick={() => { onSearch(name); setName("")}} className={Style.button} >Search</button>
             </NavLink>
         </div>
     )

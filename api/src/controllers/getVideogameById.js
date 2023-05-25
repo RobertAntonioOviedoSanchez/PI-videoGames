@@ -15,7 +15,7 @@ const getVideogamesById = async (idVideogame) => {
         const game = {
             id: data.id,
             name: data.name,
-            description: data.description, //regex para eliminar etiquetas html del description .replace(/<\/?[^>]+>/gi, "")
+            description: data.description.replace(/<\/?[^>]+>/gi, ""), //regex para eliminar etiquetas html del description .replace(/<\/?[^>]+>/gi, "")
             platforms: platforms,
             image: data.background_image,
             released: data.released,

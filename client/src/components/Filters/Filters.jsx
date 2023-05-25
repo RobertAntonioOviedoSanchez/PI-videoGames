@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from "react-redux"
 import { filterByGenre, filterByOrigin, orderByName, orderByRating } from "../../redux/actions"
+import Style from "./Filters.module.css"
 
 
 
@@ -25,19 +26,20 @@ const Filters = () => {
 
 
     return(
-        <div>
+        <div className={Style.container}>
             {/* //ORDENAR POR ORDEN ALFABETICO, ASCENDENTE O DESCENDENTE */}
-            <div>
-                <select onChange={handleOrder}>
+            <div className={Style.containerOrders}>
+                <h2>Order By </h2>
+                <select onChange={handleOrder} className={Style.selects}>
                     <option value="defaultValue" disabled="disabled" selected="defaultValue">Order by name</option>
-                    <option value="A">Ascendente</option>
-                    <option value="D">Descendente</option>
+                    <option value="A">A - Z</option>
+                    <option value="D">Z - A</option>
                 </select>
-            </div>
+            
 
             {/* //ORDENAR POR RATING */}
-            <div>
-                <select onChange={handleRating}>
+            
+                <select onChange={handleRating} className={Style.selects}>
                     <option value="defaultValue" disabled="disabled" selected="defaultValue">Order by rating</option>
                     <option value="High">High</option>
                     <option value="Low">Low</option>
@@ -45,18 +47,19 @@ const Filters = () => {
             </div>
 
             {/* //FILTRAR POR ORIGEN */}
-            <div>
-                <select onChange={handleOrigin}>
+            <div className={Style.containerFilters}>
+                <h2>Filter By </h2>
+                <select onChange={handleOrigin} className={Style.selects}>
                     <option value="defaultValue" disabled="disabled" selected="defaultValue">Filter by origin</option>
                     <option value="allVideogames">All videogames</option>
                     <option value="API">API</option>
                     <option value="DB">Data base</option>
                 </select>
-            </div>
+            
 
             {/* //FILTRAR POR GENERO */}
-            <div>
-                <select onChange={handleGender}>
+            
+                <select onChange={handleGender} className={Style.selects}>
                     <option value="defaultValue" disabled="disabled" selected="defaultValue">Filter by genres</option>
                     <option value="allGenres">All genres</option>
                     {

@@ -1,0 +1,110 @@
+
+.containerForm {
+    width: auto;
+    height: auto;
+    min-height: 130vh;
+    background-image: url(./fondo.jpg);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+/* .containerElements {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+} */
+
+.h1 {
+    font-size: 4rem;
+}
+
+.form {
+    margin: auto;
+    /* margin-top: 30px; */
+    background-color: #231123;
+    width: 60%;
+    height: 110%;
+    border-radius: 1rem;
+    padding: 1rem 3rem;
+    color: white;
+    box-shadow: 7px 13px 37px #000;
+    position: absolute;
+    left: 20%;
+    top: 20%;
+}
+
+.labels {
+    font-size: 1.4rem;
+    display: flex;
+    margin-top: 1rem;
+    margin-bottom: 0.3rem;
+}
+
+.inputs {
+    width: 100%;
+    padding: 0.7rem 0.2rem;
+    margin-bottom: 0.5rem;
+    background: #000;
+    border: solid 1px #812c86;
+    border-radius: 6px;
+    color: white;
+    font-size: 15px; 
+}
+
+.selects {
+    display: flex;
+    width: 10rem;
+    height: 2rem;
+    font-size: 18px;
+    border-radius: 8px;
+    padding: 2px;
+    background-color: black;
+    border: solid 1px #812c86;
+    /* margin: 0 0.5rem; */
+}
+
+.description {
+    width: 100%;
+    height: 10rem;
+    padding: 0.7rem 0.2rem;
+    margin-bottom: 0.5rem;
+    background: #000;
+    border: solid 1px #812c86;
+    border-radius: 6px;
+    color: white;
+    font-size: 15px;
+}
+
+.button {
+    width: 30%;
+    padding: 0.9rem;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    background: #39113b;
+    color: white;
+    margin: 0.8rem auto;
+    border: solid 1px #000;
+}
+
+.button:hover{
+    cursor: pointer;
+    background: #360a36;
+}
+
+.errors {
+    color: #BF0603;
+    margin: 0;
+    display: flex;
+}
+
+.divMapped {
+    display: flex;
+}
+
+.mapped {
+    margin-top: 8px;
+    margin-left: 10px;
+    color: rgb(7, 170, 7);
+}
