@@ -119,7 +119,11 @@ const Form = () => {
 
     const handleSubmit = (event) => {
         event.preventDefault()
-        axios.post(`http://localhost:3001/videogames`, newVideogame)
+        axios.post(`http://localhost:3001/videogames`, newVideogame).then((res) => {
+            console.log(res);
+            alert("Your videogame has been created succesfully")
+        })
+        .catch(() => alert("tu videojuego no fue creado con exito"))
         setErrors({})
         setVideogame({
             name: "",
@@ -130,7 +134,7 @@ const Form = () => {
             rating: "",
             genres: [],
         })
-        alert("Your videogame has been created succesfully")
+        
     }
 
 

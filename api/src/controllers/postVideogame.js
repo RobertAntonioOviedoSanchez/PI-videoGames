@@ -1,6 +1,5 @@
 const { Videogames, Genres } = require("../db")
 
-  
 const postVideogame = async (infoGame) => {
   const { genres } = infoGame;
   const newGame = await Videogames.create(infoGame)
@@ -21,7 +20,7 @@ const postVideogame = async (infoGame) => {
     },
     include: {
       model: Genres,
-      attributes: [],
+      attributes: ["name"],
       through: {
         attributes: [],
       },
